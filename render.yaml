@@ -1,0 +1,22 @@
+databases:
+  - name: stagezerodb
+    plan: free
+    databaseName: mysite
+    user: stagezero
+
+services:
+  - type: web
+    plan: free
+    name: stagezero
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "python -m gunicorn stage_zero.asgi:application -k uvicorn.workers.UvicornWorker"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: stagezerodb
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
