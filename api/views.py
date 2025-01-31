@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 class InfoObject(APIView):
     def get(self, request, format=None):
         email = "poesitor1@gmail.com"
-        github_url = "https://github.com/Bakarray/HNG12/Task1"
+        github_url = "https://github.com/Bakarray/HNG12_stage_zero"
         current_datetime = datetime.now(timezone.utc).isoformat(timespec='seconds').replace('+00:00', 'Z')
         
         data = {
