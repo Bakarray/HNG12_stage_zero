@@ -1,5 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import status
 from datetime import datetime, timezone
 
 # Create your views here.
@@ -15,4 +16,4 @@ class InfoObject(APIView):
             "github_url": github_url
         }
 
-        return Response(data)
+        return Response(data, status=status.HTTP_200_OK)
